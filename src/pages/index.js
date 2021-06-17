@@ -11,12 +11,17 @@ import {
 } from '../components'
 
 const HomePage = ({data}) => {
-  const {allAirtable:{nodes:projects}} = data;
+  const {
+    allAirtable:{nodes:projects},
+    customers:{nodes}
+  } = data;
   return (
     <Layout>
       <Hero />
       <About />
       <Projects projects={projects} title="latest projects" />
+      <Survey />
+      <Slider customers={nodes} />
     </Layout>
   )
 }
@@ -42,6 +47,23 @@ export const query = graphql`
           }
         }
         id
+      }
+    }
+    customers: allAirtable(filter: {table: {eq: "Customers"}}) {
+      nodes {
+        id
+        data {
+          name
+          quote
+          title
+          image {
+            localFiles {
+              childImageSharp {
+                gatsbyImageData(layout: FIXED, width: 150, height: 150, placeholder: TRACED_SVG)
+              }
+            }
+          }
+        }
       }
     }
   }
