@@ -26,23 +26,24 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+
     {
       resolve: `gatsby-source-airtable`,
       options: {
         apiKey: process.env.GATSBY_AIRTABLE_API,
         concurrency: 5,
-        tables:[
+        tables: [
           {
             baseId: process.env.GATSBY_AIRTABLE_BASE_ID,
             tableName: `Projects`,
-            mapping:{image:`fileNode`}
+            mapping: { image: `fileNode` },
           },
           {
             baseId: process.env.GATSBY_AIRTABLE_BASE_ID,
             tableName: `Customers`,
-            mapping:{image:`fileNode`}
+            mapping: { image: `fileNode` },
           },
-        ]
+        ],
       },
     },
     {
@@ -53,7 +54,7 @@ module.exports = {
         indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
         queries: require('./src/constants/algolia'),
         chunkSize: 10000,
-      }
-    }
+      },
+    },
   ],
 }
