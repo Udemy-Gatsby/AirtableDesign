@@ -12,14 +12,14 @@ import {
 
 const HomePage = ({data}) => {
   const {
-    //allAirtable:{nodes:projects},
+    allAirtable:{nodes:projects},
     customers:{nodes}
   } = data;
   return (
     <Layout>
       <Hero />
       <About />
-      {/*<GridProjects projects={projects} title="latest projects" />*/}
+      <GridProjects projects={projects} title="latest projects" />
       <Survey />
       <Slider customers={nodes} />
     </Layout>
