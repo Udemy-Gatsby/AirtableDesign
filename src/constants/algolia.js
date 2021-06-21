@@ -29,10 +29,10 @@ function pageToAlgoliaRecord({ id, data: { name, type, date, image } }) {
   }
 }
 const queries = [
-  {
+  /*{
     query: airtableQuery,
     transformer: ({ data }) => data.allAirtable.nodes.map(pageToAlgoliaRecord),
-  },
+  },*/
 ]
 
 module.exports = queries
